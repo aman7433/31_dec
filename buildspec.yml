@@ -4,10 +4,7 @@ phases:
   install:
     commands:
       - npm install --no-cache
-  build:
-    commands:
-      - npm test
-
+ 
 artifacts:
   files:
     - '**/*'

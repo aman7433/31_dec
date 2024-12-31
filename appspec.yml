@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+
+files:
+  - source: / # Copy everything from the root directory
+    destination: /var/www/myapp # Destination folder in the EC2 instance or server
+
+hooks:
+  BeforeInstall:
+    - location: scripts/stop-server.sh
+      timeout: 300
+  AfterInstall:
+    - location: scripts/start-server.sh
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/restart-server.sh
+      timeout: 300
+  ApplicationStop:
+    - location: scripts/stop-server.sh
+      timeout: 300
